@@ -19,7 +19,9 @@ public class Main
 	           System.out.println("3] Find minimum of the array");
 	           System.out.println("4] Find sum of odd numbers of the array");
 	           System.out.println("5] Find sum of even numbers of the array");
-	           System.out.println("6]exit");
+	           System.out.println("6] Find second smallest in array");
+	           System.out.println("7] Find second largest in array");
+	           System.out.println("8]exit");
     	       System.out.println("Enter choice");
 	           int choice = sc.nextInt();
 	           
@@ -43,7 +45,13 @@ public class Main
                    case 5:
                         System.out.println("even sum is : "+evenSum(Array,n));
                        break;
-                   case 6:
+                  case 6:
+                      System.out.println("Second smallest element is :"+secondSmallest(Array,n));
+                      break;
+                   case 7:
+                       System.out.println("Second largest element is :"+secondLargest(Array,n));
+                       break;
+                   default:
                        flag = false;
                        break;
 	           }
@@ -88,6 +96,33 @@ public class Main
 	        }
 	    }
 	    return sum;
+	}
+	public static int secondSmallest(int []array , int size){
+	    int smallest = Integer.MAX_VALUE;
+	    int secondSmallest = Integer.MAX_VALUE;
+	    for(int i=0;i<size;i++){
+	       if(smallest>array[i]){
+	           secondSmallest = smallest;
+	           smallest = array[i];
+	       }else if(secondSmallest>array[i] && smallest < array[i]){
+	           secondSmallest = array[i];
+	       }
+	    }
+	    return secondSmallest;
+	}
+	public static int secondLargest(int []array , int size){
+	    int largest = Integer.MIN_VALUE;
+	    int secondLargest = Integer.MIN_VALUE;
+	    
+	    for(int i=0;i<size;i++){
+            if(largest<array[i]){
+                secondLargest = largest;
+                largest = array[i];
+            }else if(secondLargest>array[i] && array[i]<largest){
+                secondLargest = array[i];
+            }
+	    }
+	    return secondLargest;
 	}
 
 }
